@@ -13,7 +13,6 @@ A demo is available [here](https://get.intor.fi/flightmap/).
 * [jQuery](https://jquery.com/)
 * [Bootstrap](https://getbootstrap.com/)
 * [Leaflet](https://leafletjs.com/)
-* [Leaflet.curve](https://www.npmjs.com/package/leaflet-curve)
 * [Leaflet Rotated Marker](https://www.npmjs.com/package/leaflet-rotatedmarker)
 * [Leaflet.GridLayer.GoogleMutant](https://www.npmjs.com/package/leaflet.gridlayer.googlemutant)
 * [Google Maps](https://maps.google.com/)

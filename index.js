@@ -5,7 +5,7 @@ let map = L.map(
 
 L.gridLayer.googleMutant({
     type: "roadmap",
-    maxZoom: 6,
+    maxZoom: 10,
     styles: [
         { featureType: "water", stylers: [{ color: "#444444" }] }
     ]}).addTo(map);
@@ -73,23 +73,35 @@ async function createMarkers() {
                 className: "leaflet-tooltip"
             });
 
-            let route = L.curve(false, {color:"red",fill:true}).addTo(map);
+            let routeFrom = L.polyline(false, {
+                weight: 3,
+                color: "red"
+            }).addTo(map);
+              
+            let routeTo = L.polyline(false, {
+                weight: 3,
+                dashArray: "5, 10",
+                color: "red"
+            }).addTo(map);
 
             marker.on("mouseover", e => {
                 e.target.openPopup();
-                route.setPath([
-                    "M",
+
+                routeFrom.setLatLngs([
                     [flight.departure.latitude, flight.departure.longitude],
-                    "Q",
+                    [flight.currentLocation.latitude, flight.currentLocation.longitude]
+                ]);
+
+                routeTo.setLatLngs([
                     [flight.currentLocation.latitude, flight.currentLocation.longitude],
-                    [flight.arrival.latitude, flight.arrival.longitude],
-                    "Z"
+                    [flight.arrival.latitude, flight.arrival.longitude]
                 ]);
             });
 
             marker.on("mouseout", e => {
                 e.target.closePopup();
-                route.setPath(false);
+                routeFrom.setLatLngs(false);
+                routeTo.setLatLngs(false);
             });
         });
     });
