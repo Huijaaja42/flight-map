@@ -1,4 +1,7 @@
-let map = L.map("map").setView([51.505, -0.09], 3);
+let map = L.map(
+    "map",
+    { attributionControl: false }
+    ).setView([51.505, -0.09], 3);
 
 L.gridLayer.googleMutant({
     type: "roadmap",
